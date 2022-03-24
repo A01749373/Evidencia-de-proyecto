@@ -10,9 +10,9 @@ Exercises
 """
 
 from turtle import *
-import math  #Libreria para operaciones matematicas
 import turtle as t
 from freegames import vector
+import math
 
 def line(start, end):
     """Draw line from start to end."""
