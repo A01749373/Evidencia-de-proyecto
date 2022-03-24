@@ -10,6 +10,10 @@ Exercises
 """
 
 from turtle import *
+<<<<<<< HEAD
+=======
+import math  #Libreria para operaciones matematicas
+>>>>>>> 755aa4db06c7f5f4e0808785a12251ccc0905323
 import turtle as t
 from freegames import vector
 import math
@@ -38,7 +42,15 @@ def square(start, end):
 
 def circle(start, end):
     """Draw circle from start to end."""
-    pass  # TODO
+    up()
+    rx= (end.x-start.x)/2  #Radio de acuerdo a la distancia x
+    ry= (end.y-start.y)/2  #Radio de acuerdo a la distancia y
+    goto(start.x+rx, start.y+ry) #Posicion de inicio del circulo
+    down()
+    begin_fill()
+    r=math.sqrt((end.x-start.x)**2+(end.y-start.y)**2) #Distancia entre puntos x,y
+    t.circle(r)
+    end_fill()
 
 
 def rectangle(start, end):
@@ -99,6 +111,7 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
+onkey(lambda: color('#ACE7FF'), 'P') #Agregar un color
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', circle), 'c')
