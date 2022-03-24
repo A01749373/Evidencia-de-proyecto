@@ -10,10 +10,6 @@ Exercises
 """
 
 from turtle import *
-<<<<<<< HEAD
-=======
-import math  #Libreria para operaciones matematicas
->>>>>>> 755aa4db06c7f5f4e0808785a12251ccc0905323
 import turtle as t
 from freegames import vector
 import math
