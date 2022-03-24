@@ -10,9 +10,9 @@ Exercises
 """
 
 from turtle import *
-
+import turtle as t
 from freegames import vector
-
+import math
 
 def line(start, end):
     """Draw line from start to end."""
@@ -43,12 +43,32 @@ def circle(start, end):
 
 def rectangle(start, end):
     """Draw rectangle from start to end."""
-    pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(4):
+        if(count%2==0):
+            forward(end.x - start.x) #Ancho del rectangulo
+        else: 
+            forward((end.x - start.x)/2) #Alto del rectangulo
+        left(90)
+    end_fill()
 
 
 def triangle(start, end):
     """Draw triangle from start to end."""
-    pass  # TODO
+    up()
+    rx = (end.x - start.x)/2 #Distancia x
+    ry = (end.y - start.y)/2 #Distancia y
+    goto(start.x + rx, start.y + ry) #Posicion de inicio del triangulo
+    down()
+    begin_fill()
+    r = math.sqrt((end.x - start.x)**2 + (end.y - start.y)**2) #Distancia entre puntos x, y
+    t.circle(r, steps=3) #Numero de lados de la figura
+    end_fill()
+
 
 
 def tap(x, y):
