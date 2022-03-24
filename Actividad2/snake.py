@@ -10,8 +10,8 @@ Exercises
 
 from random import randrange
 from turtle import *
-
 from freegames import square, vector
+import random as r
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
@@ -28,6 +28,12 @@ def inside(head):
     """Return True if head inside boundaries."""
     return -200 < head.x < 190 and -200 < head.y < 190
 
+colores = ["#ABDEE6","#CBAACB","#B6CFB6","#FFCCB6","#F3B0C3"] #Lista de colores en hexadecimal
+colorSnake = r.choice(colores) #Seleccion aleatoria para color de la vibora
+colorFood = r.choice(colores) #Seleccion aleatoria para color de la comida
+if (colorSnake == colorFood): #Evaluar que no tengan el mismo color
+    index = colores.index(colorSnake)
+    colorFood = colores[index+1]
 
 def move():
     """Move snake forward one segment."""
@@ -51,9 +57,9 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, colorSnake)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, colorFood)
     update()
     ontimer(move, 100)
 
