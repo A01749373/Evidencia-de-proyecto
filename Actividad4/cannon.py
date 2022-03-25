@@ -55,11 +55,11 @@ def move():
         targets.append(target)
 
     for target in targets:
-        target.x -= 0.5
+        target.x -= 1 #Aumentar la velocidad de los balones
 
     if inside(ball):
         speed.y -= 0.35
-        ball.move(speed)
+        ball.move(speed*2) #Aumentar la velocidad del proyectil
 
     dupe = targets.copy()
     targets.clear()
