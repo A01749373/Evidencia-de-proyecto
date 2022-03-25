@@ -134,12 +134,40 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
-            options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
-            ]
+	    #Hacer los fantasmas mas inteligentes (seguir a pacman)
+            if pacman.x > point.x and pacman.y > point.y: 
+                    options = [
+                    vector(10, 0),
+                    vector(0, 10),
+                ]
+
+            elif pacman.x < point.x and pacman.y < point.y:
+                    options = [
+                    vector(-10, 0),
+                    vector(0, -10),
+                ]
+
+            elif pacman.x > point.x and pacman.y < point.y:
+                    options = [
+                    vector(10, 0),
+                    vector(0, -10),
+          
+                ]
+                
+            elif pacman.x < point.x and pacman.y > point.y:
+                    options = [
+                    vector(-10, 0),
+                    vector(0, 10),
+                
+                ]
+        
+            else:
+                    options = [        
+                    vector(10, 0),
+                    vector(-10, 0),
+                    vector(0, 10),
+                    vector(0, -10),
+                    ]
             plan = choice(options)
             course.x = plan.x
             course.y = plan.y
