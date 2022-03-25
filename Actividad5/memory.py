@@ -19,7 +19,7 @@ tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
 numTaps = 0 #Inicializar contador taps
-
+reveladas = 0 #Inicializar contador de tarjetas reveladas
 
 def square(x, y):
     """Draw white square with black outline at (x, y)."""
@@ -46,7 +46,7 @@ def xy(count):
 
 def tap(x, y):
     """Update mark and hidden tiles based on tap."""
-    global numTaps #Convertir a variables globales para modificaciones
+    global numTaps, reveladas #Convertir a variables globales para modificaciones
     spot = index(x, y)
     mark = state['mark']
     numTaps+=1 #Aumentar el numero de taps al ejecutar la funcion
@@ -54,6 +54,7 @@ def tap(x, y):
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
+        reveladas+=1 #Aumentar el contador de acuerdo al estado de la tarjeta
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
@@ -79,6 +80,10 @@ def draw():
         goto(x + 27, y) #Centrar
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'), align="center") #Centrar y alinear el digito
+    
+    if (reveladas==32): #Evalua si todas las cartas ya fueron reveladas
+        goto(60,203)
+        write("Ganaste!", font=("Arial",20))
 
     update()
     goto(-200,203)
