@@ -71,8 +71,11 @@ def move():
     draw()
 
     for target in targets:
-        if not inside(target):
-            return
+        if not inside(target): #Modificacion para eliminar el balon que salga de la ventana y reposicionarlo
+            targets.remove(target)
+            y = randrange(-150, 150)
+            target = vector(200, y)
+            targets.append(target)
 
     ontimer(move, 50)
 
